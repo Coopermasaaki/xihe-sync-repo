@@ -115,6 +115,10 @@ func main() {
 		return
 	}
 
+	if err := os.Remove(kafkaCfg.MQCert); err != nil {
+		log.Fatalf("Error remove kafka cert file, err:%v", err)
+	}
+
 	defer messages.KfkLibExit()
 
 	// gitlab
